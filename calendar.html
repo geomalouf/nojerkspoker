@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>No Jerks Poker – Calendar</title>
+  <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css' rel='stylesheet' />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js'></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      text-align: center;
+    }
+    h1 {
+      margin: 20px 0;
+    }
+    #calendar {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      color: #000;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    .rsvp-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #ffcc00;
+      color: #000;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🗓️ Poker Night Calendar</h1>
+  <div id='calendar'></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const calendarEl = document.getElementById('calendar');
+
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        height: 'auto',
+        events: [
+          {
+            title: 'June Game Night – 7PM',
+            start: '2025-06-29',
+            extendedProps: {
+              rsvp: 'https://docs.google.com/forms/d/1J6MIireBqPCFiRxoQ2BO1tHTGqLgG9y4QTffJwDjFHg/edit'
+            }
+          },
+          {
+            title: 'July Game Night – 6:30PM',
+            start: '2025-07-13',
+            extendedProps: {
+              rsvp: 'https://docs.google.com/forms/d/1J6MIireBqPCFiRxoQ2BO1tHTGqLgG9y4QTffJwDjFHg/edit'
+            }
+          }
+        ],
+        eventClick: function(info) {
+          const formUrl = info.event.extendedProps.rsvp;
+          if (formUrl) {
+            window.open(formUrl, '_blank');
+          }
+        }
+      });
+
+      calendar.render();
+    });
+  </script>
+
+  <p><a href="index.html" style="color:#ffcc00;">← Back to Home</a></p>
+
+</body>
+</html>
